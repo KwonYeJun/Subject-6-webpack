@@ -1,14 +1,14 @@
 const path = require('path');
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
 
   entry: './test.ts',
-  output:{
+  output: {
     path: path.resolve(__dirname, 'dist'),
-    filename : 'bundle.js',
+    filename: 'bundle.js',
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'bundle'),
+    static: './bundle',
     port: 3000,
     hot: true,
     open: true,
@@ -17,10 +17,14 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        use: ['bable-loader','ts-loader']
+        use: ['babel-loader', 'ts-loader']
       }
     ]
-  }
-  
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './bundle/index.html',
+    }),
+  ],
 
 }

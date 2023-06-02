@@ -1,0 +1,1 @@
+(()=>{"use strict";var e=document.getElementById("root");console.log(e);var t=document.createElement("div");t.innerText="안녕하세요",null==e||e.appendChild(t)})();
